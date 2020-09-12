@@ -1,0 +1,50 @@
+import java.io.*;
+class xs
+{
+			int a[]=new int[4];
+			int b[]={0,0,1,1};
+			//int c= new int[4];
+			String s="";
+			int i,p;
+	
+			void encode()
+			{
+				try
+				{
+				DataInputStream dis=new DataInputStream(System.in);
+				System.out.println();
+				System.out.print("Enter Binary Number : ");
+				s=dis.readLine();
+				int dec= Integer.parseInt(s,2);
+				int sum = dec+3;
+				String bin=Integer.toBinaryString(sum);
+				System.out.println("Encoded No : "+bin);
+
+				}
+				catch(Exception e){}     	
+			}		
+			void decode()
+			{
+				try
+				{
+					String s="";	
+					DataInputStream dis=new DataInputStream(System.in);
+					System.out.print("Enter Binary Number : ");
+					s=dis.readLine();
+					int dec= Integer.parseInt(s,2);
+					int sum = dec-3;
+					String bin=Integer.toBinaryString(sum);
+					System.out.println("decoded No : "+bin);	
+				}
+				catch(Exception e){}
+				
+			}
+		 
+		 public static void main(String []args)
+		 {
+			 xs h=new xs();
+			 h.encode();
+			 System.out.println();
+			 h.decode();
+		 }
+}
