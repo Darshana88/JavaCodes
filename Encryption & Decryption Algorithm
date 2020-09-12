@@ -1,0 +1,90 @@
+import java.io.*; 
+class onet
+{
+  
+		
+		 static String s1="abcdefghijklmnopqrstuvwxyz";
+						   //defghijklmnopqrstuvwxyzabc	
+		 String s2,s3;
+		 String s4="";
+		 int a[]=new int[10];
+		 int b[]=new int[10];
+		 int c[]=new int[10];
+		 int i,j,n;
+		void encryp()
+		{try{
+			DataInputStream dis=new DataInputStream(System.in);
+			System.out.println("Note:length of plaintext nd one time pad text should be same");
+			System.out.println("Enter plain text :");
+			s2=dis.readLine();
+			System.out.println("Enter one time pad text :");
+			s3=dis.readLine();
+			for(i=0;i<s2.length();i++)
+			{
+				for(j=0;j<s1.length();j++)
+				{ 
+					char ch=s1.charAt(j);
+					if(s2.charAt(i)==ch)
+					{
+						n=s1.indexOf(ch);
+						a[i]=n;
+						break;
+					}
+				}
+		    }
+			for(i=0;i<s3.length();i++)
+			{
+				for(j=0;j<s1.length();j++)
+				{ 
+					char ch=s1.charAt(j);
+					if(s3.charAt(i)==ch)
+					{
+						n=s1.indexOf(ch);
+						b[i]=n;
+						break;
+					}
+				}
+		    }
+			for(i=0;i<a.length;i++)
+			{
+				c[i]=a[i]+b[i];
+			}
+			for(i=0;i<c.length;i++)
+			{
+				if(c[i]>25)
+				{
+					
+					c[i]=c[i]-26;
+				}
+			
+			}
+			for(i=0;i<c.length;i++)
+			{
+				char chd=s1.charAt(c[i]);
+				s4=s4+chd;
+				
+				
+			}
+			
+			String s5=s4.substring(0,s2.length());
+			
+			System.out.println("chipher text :"+s5);	
+				
+		}		
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		}
+		
+		public static void main(String args[])
+		{
+			onet one=new onet();
+			one.encryp();
+		}
+				
+				
+
+}
